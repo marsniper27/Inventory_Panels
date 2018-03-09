@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Data;
 using System.IO;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -27,6 +28,10 @@ namespace Inventory_Panel
 
         private void Main_Load(object sender, EventArgs e)
         {
+
+            DataSet Employees = new DataSet();
+            Team t = new Team();
+            t.Teams();
             var load = new Loading();
             Details.Load = load;
             this.Controls.Add(load);
@@ -35,11 +40,12 @@ namespace Inventory_Panel
             load.Show();
             this.Show();
 
-            Details.File = @"C:\Users\kyle.marshall\Documents\Projects\Inventory Panel\Inventory_Panels\InventoryTracking.xls";
+            //Details.File = @"C:\Users\kyle.marshall\Documents\Projects\Inventory Panel\Inventory_Panels\InventoryTracking.xls";
+             Details.File = @"C:\Users\Kyle\Source\Repos\Inventory_Panels\InventoryTracking.xls";
 
 
+            //Details.File = Application.StartupPath + @"InventoryTracking.xls";
             var excel = new Excel_book();
-//Details.File = Application.StartupPath + @"InventoryTracking.xls";
             string file = Details.File;
             if (!File.Exists(file))
             {
@@ -92,6 +98,7 @@ namespace Inventory_Panel
         {
             var E = new Employees();
             E.InitializeComponent();
+            E.Dock = DockStyle.Fill;
             this.Controls.Add(E);
             panel1.Hide();
             E.Show();

@@ -14,5 +14,6 @@ namespace Inventory_Panel
         public static List<Employee> EmployeeList = new List<Employee>();
         public static Loading Load = new Loading();
         public static string File;
+        public static List<Team> Teams = new List<Team>(); 
     }
 }

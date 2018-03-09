@@ -24,7 +24,7 @@ namespace Inventory_Panel
                     {
                         Details.Employee = e;
                         label4.Text = e.Name;
-                        label5.Text = e.Team;
+                        label5.Text = e.Team.Name;
                     }
                 }
 

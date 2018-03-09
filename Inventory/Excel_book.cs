@@ -14,11 +14,11 @@ namespace Inventory_Panel
 
         public void createWorkbook()
         {
-            if (File.Exists(file) == true)
+            if (File.Exists(file))
             {
                 return;
             }
-            if (File.Exists(file) == false)
+            if (!File.Exists(file))
             {
                 Excel.Application xlApp = new Excel.Application();
                 if (xlApp == null)
@@ -120,7 +120,15 @@ namespace Inventory_Panel
                     Employee e = new Employee();
                     e.idCard = xlWorkSheet.Cells[x, 1].Value;
                     e.Name = xlWorkSheet.Cells[x, 2].Value;
-                    e.Team = xlWorkSheet.Cells[x, 3].Value;
+                    var name = xlWorkSheet.Cells[x, 3].Value;
+                    foreach (Team t in Details.Teams)
+                    {
+                        if (t.Name == name)
+                        {
+                            e.Team = t;
+                        }
+                    }
+
                     Details.EmployeeList.Add(e);
                 }
 
