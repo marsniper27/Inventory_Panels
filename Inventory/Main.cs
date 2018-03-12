@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Data;
+using System.Data.SqlClient;
 using System.IO;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -31,7 +32,7 @@ namespace Inventory_Panel
 
             DataSet Employees = new DataSet();
             Team t = new Team();
-            t.Teams();
+            //t.Teams();
             var load = new Loading();
             Details.Load = load;
             this.Controls.Add(load);
@@ -40,8 +41,8 @@ namespace Inventory_Panel
             load.Show();
             this.Show();
 
-            //Details.File = @"C:\Users\kyle.marshall\Documents\Projects\Inventory Panel\Inventory_Panels\InventoryTracking.xls";
-             Details.File = @"C:\Users\Kyle\Source\Repos\Inventory_Panels\InventoryTracking.xls";
+            Details.File = @"C:\Users\kyle.marshall\Documents\Projects\Inventory Panel\Inventory_Panels\InventoryTracking.xls";
+            // Details.File = @"C:\Users\Kyle\Source\Repos\Inventory_Panels\InventoryTracking.xls";
 
 
             //Details.File = Application.StartupPath + @"InventoryTracking.xls";
@@ -53,9 +54,12 @@ namespace Inventory_Panel
             }
             
             excel.readWorkBook();
-            MessageBox.Show($"Employees in Employee List: {Details.EmployeeList.Count.ToString()}");
+            //MessageBox.Show($"Employees in Employee List: {Details.EmployeeList.Count.ToString()}");
             load.Hide();
             panel1.Show();
+
+            var DB = new Database();
+            DB.ReadDataBase();
         }
 
         private void button1_Click(object sender, EventArgs e)

@@ -182,13 +182,13 @@ namespace Inventory_Panel
 
                     var add = currentFind.Address[true, true, Excel.XlReferenceStyle.xlA1, false, null];
 
-                    MessageBox.Show($"Barcode found at: {add}");
+                    //MessageBox.Show($"Barcode found at: {add}");
 
                     xlRange = (Excel.Range)LogWorksheet.Cells[EquipmentInUseSheet.Rows.Count, 1];
                     long lastRow = xlRange.get_End(Excel.XlDirection.xlUp).Row;
                     long newRow = lastRow + 1;
 
-                    MessageBox.Show($"New Row: {newRow}");
+                    //MessageBox.Show($"New Row: {newRow}");
 
                     Excel.Range row = EquipmentInUseSheet.get_Range(add, misValue).EntireRow;
                     Excel.Range nextRow = LogWorksheet.get_Range($"A{newRow}", misValue).EntireRow;
@@ -271,13 +271,13 @@ namespace Inventory_Panel
 
                     if (EquipmentSheet.Cells[x, 4].value == "Available")
                     {
-                        MessageBox.Show($"Barcode found at: {add}");
+                        //MessageBox.Show($"Barcode found at: {add}");
 
                         xlRange = (Excel.Range)EquipmentInUseSheet.Cells[EquipmentSheet.Rows.Count, 1];
                         long lastRow = (long)xlRange.get_End(Excel.XlDirection.xlUp).Row;
                         long newRow = lastRow + 1;
 
-                        MessageBox.Show($"New Row: {newRow}");
+                       //MessageBox.Show($"New Row: {newRow}");
 
                         
                         EquipmentSheet.get_Range($"A{x}", add).Copy(EquipmentInUseSheet.get_Range($"C{newRow}", $"E{newRow}"));

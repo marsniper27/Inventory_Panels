@@ -10,7 +10,11 @@ namespace Inventory_Panel
 
     class Employee
     {
+        public int ID { get; set; }
         public string Name {get; set;}
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
+        public string Role { get; set; }
         public double idCard {get; set;}
         public Team Team { get; set;}
     }

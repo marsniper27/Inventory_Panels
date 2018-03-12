@@ -69,6 +69,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Database.cs" />
     <Compile Include="Loading.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -91,6 +92,7 @@
     <Compile Include="Employee.cs" />
     <Compile Include="Equipment.cs" />
     <Compile Include="Excel_book.cs" />
+    <Compile Include="Machine.cs" />
     <Compile Include="Main.cs">
       <SubType>Form</SubType>
     </Compile>

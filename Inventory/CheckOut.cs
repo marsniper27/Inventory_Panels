@@ -67,7 +67,7 @@ namespace Inventory_Panel
                 }
                 Details.Load.Show();
                 var xl = new Excel_book();
-                MessageBox.Show($"The barcode is: {textBox1.Text}");
+                //MessageBox.Show($"The barcode is: {textBox1.Text}");
                 xl.CheckOut(Convert.ToInt32(textBox1.Text));
                 Details.Load.Hide();
                 this.Hide();
