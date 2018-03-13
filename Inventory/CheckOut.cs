@@ -1,4 +1,7 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Data;
+using System.Linq;
 using System.Windows.Forms;
 
 namespace Inventory_Panel
@@ -13,22 +16,23 @@ namespace Inventory_Panel
 
         public void main()
         {
+             
             var Id = new RFID();
             var card = Id.read();
 
             if (card != 0)
             {
-                foreach(Employee e in Details.EmployeeList)
+                foreach (Employee e in Details.EmployeeList)
                 {
-                    if(e.idCard == card)
+                    if (e.idCard == card)
                     {
                         Details.Employee = e;
                         label4.Text = e.Name;
-                        label5.Text = e.Team.Name;
+                        label5.Text = e.Team;
                     }
                 }
 
-                label2.Text = card.ToString();
+                IDCardNum.Text = card.ToString();
                 var barcode = new BarcodeScanner();
                 var Barcode = barcode.read();
 
@@ -44,13 +48,13 @@ namespace Inventory_Panel
                 }
             }
 
-            if(card == 0)
+            if (card == 0)
             {
                 MessageBox.Show("Card not read please try again.");
             }
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void Submit_Click(object sender, EventArgs e)
         {
             if (textBox1.Text == null)
             {
@@ -72,6 +76,10 @@ namespace Inventory_Panel
                 Details.Load.Hide();
                 this.Hide();
             }
+        }
+        private void Return_Click(object sender, EventArgs e)
+        {
+            this.Hide();
         }
     }
 }

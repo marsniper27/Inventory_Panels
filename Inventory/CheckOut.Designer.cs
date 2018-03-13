@@ -29,8 +29,9 @@
         private void InitializeComponent()
         {
             this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
+            this.IDCardNum = new System.Windows.Forms.TextBox();
+            this.Submit = new System.Windows.Forms.Button();
+            this.Return = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
@@ -46,24 +47,34 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Please scan ID Tag";
             // 
-            // label2
+            // IDCardNum
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(12, 34);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(35, 13);
-            this.label2.TabIndex = 1;
-            this.label2.Text = "Id Card";
+            this.IDCardNum.AutoSize = true;
+            this.IDCardNum.Location = new System.Drawing.Point(12, 34);
+            this.IDCardNum.Name = "IDCardNum";
+            this.IDCardNum.Size = new System.Drawing.Size(35, 13);
+            this.IDCardNum.TabIndex = 1;
+            this.IDCardNum.Text = "Id Card";
             // 
-            // button1
+            // Submit
             // 
-            this.button1.Location = new System.Drawing.Point(80, 213);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 2;
-            this.button1.Text = "button1";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.Submit.Location = new System.Drawing.Point(40, 213);
+            this.Submit.Name = "Submit";
+            this.Submit.Size = new System.Drawing.Size(75, 23);
+            this.Submit.TabIndex = 2;
+            this.Submit.Text = "Submit";
+            this.Submit.UseVisualStyleBackColor = true;
+            this.Submit.Click += new System.EventHandler(this.Submit_Click);
+            // 
+            // Return
+            // 
+            this.Return.Location = new System.Drawing.Point(120, 213);
+            this.Return.Name = "Return";
+            this.Return.Size = new System.Drawing.Size(75, 23);
+            this.Return.TabIndex = 2;
+            this.Return.Text = "Return";
+            this.Return.UseVisualStyleBackColor = true;
+            this.Return.Click += new System.EventHandler(this.Return_Click);
             // 
             // label3
             // 
@@ -88,7 +99,7 @@
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(35, 13);
             this.label4.TabIndex = 5;
-            this.label4.Text = "label4";
+            this.label4.Text = "Employee Name";
             // 
             // label5
             // 
@@ -97,7 +108,7 @@
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(35, 13);
             this.label5.TabIndex = 6;
-            this.label5.Text = "label5";
+            this.label5.Text = "Employee Team";
             // 
             // Check_Out
             // 
@@ -107,8 +118,9 @@
             this.Controls.Add(this.label4);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.label2);
+            this.Controls.Add(this.Submit);
+            this.Controls.Add(this.Return);
+            this.Controls.Add(this.IDCardNum);
             this.Controls.Add(this.label1);
             this.Name = "Check_Out";
             this.Text = "Check_Out";
@@ -120,8 +132,9 @@
         #endregion
 
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.TextBox IDCardNum;
+        private System.Windows.Forms.Button Submit;
+        private System.Windows.Forms.Button Return;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Label label4;

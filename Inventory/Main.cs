@@ -30,6 +30,10 @@ namespace Inventory_Panel
         private void Main_Load(object sender, EventArgs e)
         {
 
+            var DB = new Database();
+            DB.ReadDataBase();
+            DB.fillEmployee();
+
             DataSet Employees = new DataSet();
             Team t = new Team();
             //t.Teams();
@@ -58,8 +62,6 @@ namespace Inventory_Panel
             load.Hide();
             panel1.Show();
 
-            var DB = new Database();
-            DB.ReadDataBase();
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -95,7 +97,9 @@ namespace Inventory_Panel
 
         private void Database_Click(object sender, EventArgs e)
         {
-            System.Diagnostics.Process.Start(Details.File);
+            var dataViewer = new DatabaseViewer();
+            dataViewer.Show();
+            //System.Diagnostics.Process.Start(Details.File);
         }
 
         private void Employees_Click(object sender, EventArgs e)

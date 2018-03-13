@@ -19,7 +19,7 @@ namespace Inventory_Panel
         public Double read(/*string[] args*/)
         {
             ErrorCode ec = ErrorCode.None;
-            int cardID = 77592;
+            int cardID = 1;
             try
             {
                 // Find and open the usb device.

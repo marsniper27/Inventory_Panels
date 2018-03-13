@@ -115,22 +115,22 @@ namespace Inventory_Panel
                 xlRange = xlWorkSheet.Cells[xlWorkSheet.Rows.Count, 1];
                 long lastRow = xlRange.get_End(Excel.XlDirection.xlUp).Row;
 
-                for (long x = 2; x <= lastRow ;x++)
-                {
-                    Employee e = new Employee();
-                    e.idCard = xlWorkSheet.Cells[x, 1].Value;
-                    e.Name = xlWorkSheet.Cells[x, 2].Value;
-                    var name = xlWorkSheet.Cells[x, 3].Value;
-                    foreach (Team t in Details.Teams)
-                    {
-                        if (t.Name == name)
-                        {
-                            e.Team = t;
-                        }
-                    }
+                //for (long x = 2; x <= lastRow ;x++)
+                //{
+                //    Employee e = new Employee();
+                //    e.idCard = xlWorkSheet.Cells[x, 1].Value;
+                //    e.Name = xlWorkSheet.Cells[x, 2].Value;
+                //    var name = xlWorkSheet.Cells[x, 3].Value;
+                //    foreach (Team t in Details.Teams)
+                //    {
+                //        if (t.Name == name)
+                //        {
+                //            e.Team = t;
+                //        }
+                //    }
 
-                    Details.EmployeeList.Add(e);
-                }
+                //    Details.EmployeeList.Add(e);
+                //}
 
 
                 xlWorkBook.Close(true, misValue, misValue);

@@ -27,6 +27,14 @@ namespace Inventory_Panel
                 SqlDataAdapter EmployeeAdapter = new SqlDataAdapter("SELECT * FROM Employees", cnn);
                 TeamAdapter.Fill(InventorySystem, "Teams");
                 MachineAdapter.Fill(InventorySystem, "Machines");
+                EmployeeAdapter.Fill(InventorySystem, "Employees");
+
+                foreach (DataRow R in InventorySystem.Tables["Teams"].Rows)
+                {
+                    var t = new Team();
+                    t.Name = R["Name"].ToString();
+                    Details.Teams.Add(t);
+                }
                 //EmployeeAdapter.Fill(InventorySystem, "Employees");
                 //foreach (DataRow R in InventorySystem.Tables["Teams"].Rows)
                 //{
@@ -72,6 +80,21 @@ namespace Inventory_Panel
             catch (Exception e)
             {
                 Console.WriteLine(e.ToString());
+            }
+        }
+        public void fillEmployee()
+        {
+            foreach(DataRow r in Details.data.Employees.Rows)
+            {
+                Employee e = new Employee();
+                e.ID = int.Parse(r["ID"].ToString());
+                e.FirstName = r["FirstName"].ToString();
+                e.LastName = r["LastName"].ToString();
+                e.Team = r["Team"].ToString();
+                e.Role = r["Role"].ToString();
+                e.idCard = int.Parse(r["ID Card"].ToString());
+
+                Details.EmployeeList.Add(e);
             }
         }
     }

@@ -22,5 +22,16 @@ namespace Inventory_Panel.Properties {
                 return defaultInstance;
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=marsniper27.hopto.org;Initial Catalog=InventorySystem;Persist Securit" +
+            "y Info=True;User ID=sa;Password=Jac0bI2aac1!")]
+        public string InventorySystemConnectionString {
+            get {
+                return ((string)(this["InventorySystemConnectionString"]));
+            }
+        }
     }
 }

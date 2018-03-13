@@ -25,7 +25,7 @@ namespace Inventory_Panel
             barcodeBox.Text = Barcode.ToString();
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void Submit_Click(object sender, EventArgs e)
         {
             if (barcodeBox.Text == null)
             {
@@ -47,6 +47,11 @@ namespace Inventory_Panel
                 Details.Load.Hide();
                 this.Hide();
             }
+        }
+
+        private void Return_Click(object sender, EventArgs e)
+        {
+            this.Hide();
         }
     }
 }

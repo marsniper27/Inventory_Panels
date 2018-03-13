@@ -16,7 +16,7 @@ namespace Inventory_Panel
         public string LastName { get; set; }
         public string Role { get; set; }
         public double idCard {get; set;}
-        public Team Team { get; set;}
+        public string Team { get; set;}
     }
 
     class EmployeeSearch
@@ -112,8 +112,8 @@ namespace Inventory_Panel
                 {
                     this.TextBox1.Text += "  ";
                 }
-                this.TextBox2.Text += ($"{E.Team.Name} ");
-                for (int x = E.Team.Name.Length; x < 10; x++)
+                this.TextBox2.Text += ($"{E.Team} ");
+                for (int x = E.Team.Length; x < 10; x++)
                 {
                     this.TextBox2.Text += " ";
                 }

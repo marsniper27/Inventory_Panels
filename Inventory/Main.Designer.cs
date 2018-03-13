@@ -36,7 +36,7 @@
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
-            // button1
+            // Submit
             // 
             this.button1.Location = new System.Drawing.Point(18, 20);
             this.button1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);

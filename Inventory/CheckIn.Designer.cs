@@ -30,7 +30,8 @@
         {
             this.label1 = new System.Windows.Forms.Label();
             this.barcodeBox = new System.Windows.Forms.TextBox();
-            this.button1 = new System.Windows.Forms.Button();
+            this.Submit = new System.Windows.Forms.Button();
+            this.Return = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label1
@@ -52,21 +53,32 @@
             this.barcodeBox.TabIndex = 1;
             this.barcodeBox.Text = "Barcode Number";
             // 
-            // button1
+            // Submit
             // 
-            this.button1.Location = new System.Drawing.Point(99, 226);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 2;
-            this.button1.Text = "Submit";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.Submit.Location = new System.Drawing.Point(40, 213);
+            this.Submit.Name = "Submit";
+            this.Submit.Size = new System.Drawing.Size(75, 23);
+            this.Submit.TabIndex = 2;
+            this.Submit.Text = "Submit";
+            this.Submit.UseVisualStyleBackColor = true;
+            this.Submit.Click += new System.EventHandler(this.Submit_Click);
+            // 
+            // Return
+            // 
+            this.Return.Location = new System.Drawing.Point(120, 213);
+            this.Return.Name = "Return";
+            this.Return.Size = new System.Drawing.Size(75, 23);
+            this.Return.TabIndex = 2;
+            this.Return.Text = "Return";
+            this.Return.UseVisualStyleBackColor = true;
+            this.Return.Click += new System.EventHandler(this.Return_Click);
             // 
             // CheckIn
             // 
             this.AutoSize = true;
             this.ClientSize = new System.Drawing.Size(284, 300);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.Submit);
+            this.Controls.Add(this.Return);
             this.Controls.Add(this.barcodeBox);
             this.Controls.Add(this.label1);
             this.Name = "CheckIn";
@@ -80,6 +92,7 @@
 
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox barcodeBox;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button Submit;
+        private System.Windows.Forms.Button Return;
     }
 }
