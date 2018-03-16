@@ -16,7 +16,7 @@ namespace Inventory_Panel
 
         #endregion
 
-        public Double read(/*string[] args*/)
+        public int read(/*string[] args*/)
         {
             ErrorCode ec = ErrorCode.None;
             int cardID = 1;

@@ -8,7 +8,12 @@ namespace Inventory_Panel
 {
     class Equipment
     {
-        public string Name {get; set;}
-        public int Barcode {get; set;}
+        public string Type {get; set; }
+        public int ID { get; set; }
+        public int Barcode {get; set; }
+        public int SerialNumber { get; set; }
+        public int ITSNumber { get; set; }
+        public string Status { get; set; }
+        public string Availability { get; set; }
     }
 }

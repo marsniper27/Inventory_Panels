@@ -8,6 +8,8 @@ namespace Inventory_Panel
 {
     public partial class Check_Out : Panel
     {
+        public int card = 0;
+        public int Barcode = 0;
         public Check_Out()
         {
             InitializeComponent();
@@ -18,7 +20,7 @@ namespace Inventory_Panel
         {
              
             var Id = new RFID();
-            var card = Id.read();
+            card = Id.read();
 
             if (card != 0)
             {
@@ -27,19 +29,35 @@ namespace Inventory_Panel
                     if (e.idCard == card)
                     {
                         Details.Employee = e;
-                        label4.Text = e.Name;
-                        label5.Text = e.Team;
+                        nameLabel.Text = e.Name;
+                        teamLabel.Text = e.Team;
                     }
                 }
 
                 IDCardNum.Text = card.ToString();
+
                 var barcode = new BarcodeScanner();
-                var Barcode = barcode.read();
+                Barcode = barcode.read();
 
                 if (Barcode != 0)
                 {
                     textBox1.Text = Barcode.ToString();
-                    var xl = new Excel_book();
+                    foreach (Equipment eq in Details.EquipmentList)
+                    {
+                        if (eq.Barcode == Barcode)
+                        {
+                            if (eq.Availability == "Available")
+                            {
+                                Details.Equipment = eq;
+                                equipmentType.Text = eq.Type;
+                                equipmentSerial.Text = eq.SerialNumber.ToString();
+                            }
+                            else if (eq.Availability == "In Use") 
+                            {
+                                MessageBox.Show($"The {eq.Type} with serial number {eq.SerialNumber} is already in use.");
+                            }
+                        }
+                    }
 
                 }
                 else
@@ -60,7 +78,7 @@ namespace Inventory_Panel
             {
                 MessageBox.Show("Barcode not read");
             }
-            else
+            else if(Details.Equipment.Availability == "Available ")
             {
                 foreach (Control ctl in Details.Load.Controls)
                 {
@@ -70,16 +88,72 @@ namespace Inventory_Panel
                     }
                 }
                 Details.Load.Show();
-                var xl = new Excel_book();
-                //MessageBox.Show($"The barcode is: {textBox1.Text}");
-                xl.CheckOut(Convert.ToInt32(textBox1.Text));
+
+                Database db = new Database();
+                db.updateEquipmentStatus("In Use");
+                Details.Equipment = null;
                 Details.Load.Hide();
                 this.Hide();
+            }
+            else if (Details.Equipment.Availability == null)
+            {
+                MessageBox.Show("Please scan an item not already assigned to a tester.");
             }
         }
         private void Return_Click(object sender, EventArgs e)
         {
+            Details.Employee = null;
+            Details.Equipment = null;
             this.Hide();
+        }
+
+        private void IDCardNum_TextChanged(object sender, EventArgs e)
+        {
+            if (int.TryParse(IDCardNum.Text, out card))
+            {
+                card = int.Parse(IDCardNum.Text);
+                if (card != 0)
+                {
+                    foreach (Employee em in Details.EmployeeList)
+                    {
+                        if (em.idCard == card)
+                        {
+                            Details.Employee = em;
+                            nameLabel.Text = em.Name;
+                            teamLabel.Text = em.Team;
+                        }
+                    }
+                }
+            }
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+            if (int.TryParse(textBox1.Text, out Barcode))
+            {
+                if (Barcode != 0)
+                {
+                    textBox1.Text = Barcode.ToString();
+                    foreach (Equipment eq in Details.EquipmentList)
+                    {
+                        if (eq.Barcode == Barcode)
+                        {
+                            equipmentType.Text = eq.Type;
+                            equipmentSerial.Text = eq.SerialNumber.ToString();
+
+                            if (eq.Availability == "Available ")
+                            {
+                                Details.Equipment = eq;
+                            }
+                            else if (eq.Availability == "In Use    ") 
+                            {
+                                MessageBox.Show($"The {eq.Type} with serial number {eq.SerialNumber} is already in use.");
+                            }
+                        }
+                    }
+
+                }
+            }
         }
     }
 }

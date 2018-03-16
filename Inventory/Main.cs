@@ -16,7 +16,8 @@ namespace Inventory_Panel
         {
             InitializeComponent();
             var date = DateTime.Now;
-            if (date.Day == 29 && !logged)
+            var monthDays = DateTime.DaysInMonth(date.Year, date.Month);
+            if (date.Day == monthDays && !logged)
             {
                 var xl = new Excel_book();
                 logged = xl.MonthlyLog();
@@ -29,14 +30,11 @@ namespace Inventory_Panel
 
         private void Main_Load(object sender, EventArgs e)
         {
-
             var DB = new Database();
+            DataSet1 ds = new DataSet1();
             DB.ReadDataBase();
-            DB.fillEmployee();
+            Details.data = ds;
 
-            DataSet Employees = new DataSet();
-            Team t = new Team();
-            //t.Teams();
             var load = new Loading();
             Details.Load = load;
             this.Controls.Add(load);
@@ -47,18 +45,8 @@ namespace Inventory_Panel
 
             Details.File = @"C:\Users\kyle.marshall\Documents\Projects\Inventory Panel\Inventory_Panels\InventoryTracking.xls";
             // Details.File = @"C:\Users\Kyle\Source\Repos\Inventory_Panels\InventoryTracking.xls";
-
-
             //Details.File = Application.StartupPath + @"InventoryTracking.xls";
-            var excel = new Excel_book();
-            string file = Details.File;
-            if (!File.Exists(file))
-            {
-                excel.createWorkbook();
-            }
-            
-            excel.readWorkBook();
-            //MessageBox.Show($"Employees in Employee List: {Details.EmployeeList.Count.ToString()}");
+        
             load.Hide();
             panel1.Show();
 

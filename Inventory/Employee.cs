@@ -15,7 +15,7 @@ namespace Inventory_Panel
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public string Role { get; set; }
-        public double idCard {get; set;}
+        public int idCard {get; set;}
         public string Team { get; set;}
     }
 

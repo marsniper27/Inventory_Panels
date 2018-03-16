@@ -11,7 +11,9 @@ using System.Windows.Forms;
 namespace Inventory_Panel
 {
     public partial class CheckIn : Panel
-    { 
+    {
+
+        public int Barcode = 0;
         public CheckIn()
         {
             InitializeComponent();
@@ -21,8 +23,34 @@ namespace Inventory_Panel
         public void main()
         {
             var barcode = new BarcodeScanner();
-            var Barcode = barcode.read();
+            Barcode = barcode.read();
             barcodeBox.Text = Barcode.ToString();
+
+            if (Barcode != 0)
+            {
+                barcodeBox.Text = Barcode.ToString();
+                foreach (Equipment eq in Details.EquipmentList)
+                {
+                    if (eq.Barcode == Barcode)
+                    {
+                        if (eq.Availability == "In Use    ")
+                        {
+                            Details.Equipment = eq;
+                            equipmentType.Text = eq.Type;
+                            equipmentSerial.Text = eq.SerialNumber.ToString();
+                        }
+                        else if (eq.Availability == "Available ")
+                        {
+                            MessageBox.Show($"The {eq.Type} with serial number {eq.SerialNumber} is not assigned to a tester.");
+                        }
+                    }
+                }
+
+            }
+            else
+            {
+                MessageBox.Show("Barcode not read please try again.");
+            }
         }
 
         private void Submit_Click(object sender, EventArgs e)
@@ -31,7 +59,7 @@ namespace Inventory_Panel
             {
                 MessageBox.Show("Barcode not read");
             }
-            else
+            else if (Details.Equipment.Availability == "In Use    ")
             {
                 foreach (Control ctl in Details.Load.Controls)
                 {
@@ -41,17 +69,49 @@ namespace Inventory_Panel
                     }
                 }
                 Details.Load.Show();
-                var xl = new Excel_book();
-               // MessageBox.Show($"The barcode is: {barcodeBox.Text}");
-                xl.CheckIn(Convert.ToInt32(barcodeBox.Text));
+                Database db = new Database();
+                db.updateEquipmentStatus("Available");
                 Details.Load.Hide();
                 this.Hide();
+            }
+            else if (Details.Equipment.Availability == "Avaialble")
+            {
+                MessageBox.Show("Please scan an item assigned to a tester.");
             }
         }
 
         private void Return_Click(object sender, EventArgs e)
         {
             this.Hide();
+        }
+
+        private void barcodeBox_TextChanged(object sender, EventArgs e)
+        {
+            if (int.TryParse(barcodeBox.Text, out Barcode))
+            {
+                if (Barcode != 0)
+                {
+                    barcodeBox.Text = Barcode.ToString();
+                    foreach (Equipment eq in Details.EquipmentList)
+                    {
+                        if (eq.Barcode == Barcode)
+                        {
+
+                            equipmentType.Text = eq.Type;
+                            equipmentSerial.Text = eq.SerialNumber.ToString();
+                            if (eq.Availability == "In Use    ")
+                            {
+                                Details.Equipment = eq;
+                            }
+                            else if (eq.Availability == "Available ")
+                            {
+                                MessageBox.Show($"The {eq.Type} with serial number {eq.SerialNumber} is not checked out.");
+                            }
+                        }
+                    }
+
+                }
+            }
         }
     }
 }

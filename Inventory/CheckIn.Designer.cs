@@ -32,6 +32,8 @@
             this.barcodeBox = new System.Windows.Forms.TextBox();
             this.Submit = new System.Windows.Forms.Button();
             this.Return = new System.Windows.Forms.Button();
+            this.equipmentType = new System.Windows.Forms.Label();
+            this.equipmentSerial = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // label1
@@ -40,18 +42,19 @@
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(12, 9);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(51, 20);
+            this.label1.Size = new System.Drawing.Size(157, 20);
             this.label1.TabIndex = 0;
             this.label1.Text = "Please scan barcode";
             // 
-            // Barcode Text Box
+            // barcodeBox
             // 
-            this.barcodeBox.AutoSize = true;
             this.barcodeBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.barcodeBox.Location = new System.Drawing.Point(13, 33);
             this.barcodeBox.Name = "barcodeBox";
+            this.barcodeBox.Size = new System.Drawing.Size(100, 26);
             this.barcodeBox.TabIndex = 1;
             this.barcodeBox.Text = "Barcode Number";
+            this.barcodeBox.TextChanged += new System.EventHandler(this.barcodeBox_TextChanged);
             // 
             // Submit
             // 
@@ -73,15 +76,34 @@
             this.Return.UseVisualStyleBackColor = true;
             this.Return.Click += new System.EventHandler(this.Return_Click);
             // 
+            // equipmentType
+            // 
+            this.equipmentType.AutoSize = true;
+            this.equipmentType.Location = new System.Drawing.Point(12, 155);
+            this.equipmentType.Name = "equipmentType";
+            this.equipmentType.Size = new System.Drawing.Size(83, 13);
+            this.equipmentType.TabIndex = 6;
+            this.equipmentType.Text = "equipmentType";
+            // 
+            // equipmentSerial
+            // 
+            this.equipmentSerial.AutoSize = true;
+            this.equipmentSerial.Location = new System.Drawing.Point(12, 180);
+            this.equipmentSerial.Name = "equipmentSerial";
+            this.equipmentSerial.Size = new System.Drawing.Size(83, 13);
+            this.equipmentSerial.TabIndex = 6;
+            this.equipmentSerial.Text = "Equipment Serial Number";
+            // 
             // CheckIn
             // 
-            this.AutoSize = true;
-            this.ClientSize = new System.Drawing.Size(284, 300);
+            AutoSize = true;
             this.Controls.Add(this.Submit);
             this.Controls.Add(this.Return);
             this.Controls.Add(this.barcodeBox);
             this.Controls.Add(this.label1);
-            this.Name = "CheckIn";
+            this.Controls.Add(this.equipmentSerial);
+            this.Controls.Add(this.equipmentType);
+            this.Size = new System.Drawing.Size(284, 300);
             this.Text = "CheckIn";
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -94,5 +116,7 @@
         private System.Windows.Forms.TextBox barcodeBox;
         private System.Windows.Forms.Button Submit;
         private System.Windows.Forms.Button Return;
+        private System.Windows.Forms.Label equipmentType;
+        private System.Windows.Forms.Label equipmentSerial;
     }
 }

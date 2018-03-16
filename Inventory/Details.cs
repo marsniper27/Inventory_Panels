@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -15,6 +16,8 @@ namespace Inventory_Panel
         public static Loading Load = new Loading();
         public static string File;
         public static List<Team> Teams = new List<Team>();
-        public static  DataSet1 data = new DataSet1();
+        public static List<Equipment> EquipmentList = new List<Equipment>();
+        public static  DataSet data = new DataSet();
+        public static Equipment Equipment = new Equipment();
     }
 }
