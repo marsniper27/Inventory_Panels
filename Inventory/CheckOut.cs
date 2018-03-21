@@ -29,8 +29,8 @@ namespace Inventory_Panel
                     if (e.idCard == card)
                     {
                         Details.Employee = e;
-                        nameLabel.Text = e.Name;
-                        teamLabel.Text = e.Team;
+                        nameLabel.Text = "Employee: " + e.Name;
+                        teamLabel.Text = "Team: " + e.Team;
                     }
                 }
 
@@ -49,10 +49,10 @@ namespace Inventory_Panel
                             if (eq.Availability == "Available")
                             {
                                 Details.Equipment = eq;
-                                equipmentType.Text = eq.Type;
-                                equipmentSerial.Text = eq.SerialNumber.ToString();
+                                equipmentType.Text = "Equipment Type: " + eq.Type;
+                                equipmentSerial.Text = "Serial Number: " + eq.SerialNumber.ToString();
                             }
-                            else if (eq.Availability == "In Use") 
+                            else if (eq.Availability == "In Use    ") 
                             {
                                 MessageBox.Show($"The {eq.Type} with serial number {eq.SerialNumber} is already in use.");
                             }
@@ -138,8 +138,8 @@ namespace Inventory_Panel
                     {
                         if (eq.Barcode == Barcode)
                         {
-                            equipmentType.Text = eq.Type;
-                            equipmentSerial.Text = eq.SerialNumber.ToString();
+                            equipmentType.Text = "Equipment Type: " + eq.Type;
+                            equipmentSerial.Text = "Serial Number: " + eq.SerialNumber.ToString();
 
                             if (eq.Availability == "Available ")
                             {

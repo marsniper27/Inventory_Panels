@@ -36,8 +36,8 @@ namespace Inventory_Panel
                         if (eq.Availability == "In Use    ")
                         {
                             Details.Equipment = eq;
-                            equipmentType.Text = eq.Type;
-                            equipmentSerial.Text = eq.SerialNumber.ToString();
+                            equipmentType.Text = "Equipment Type: " + eq.Type;
+                            equipmentSerial.Text = "Serial Number: " + eq.SerialNumber.ToString();
                         }
                         else if (eq.Availability == "Available ")
                         {
@@ -97,8 +97,8 @@ namespace Inventory_Panel
                         if (eq.Barcode == Barcode)
                         {
 
-                            equipmentType.Text = eq.Type;
-                            equipmentSerial.Text = eq.SerialNumber.ToString();
+                            equipmentType.Text = "Equipment Type: " + eq.Type;
+                            equipmentSerial.Text = "Serial Number: " + eq.SerialNumber.ToString();
                             if (eq.Availability == "In Use    ")
                             {
                                 Details.Equipment = eq;

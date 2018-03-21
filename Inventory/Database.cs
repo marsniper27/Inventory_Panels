@@ -11,25 +11,26 @@ namespace Inventory_Panel
 {
     class Database
     {
-        public string connetionString = "Data Source=156.34.219.39,1433;Network Library=DBMSSOCN;Initial Catalog=InventorySystem;User ID=sa;Password=Jac0bI2aac1!";
+        public string connectionString = "Data Source=156.34.219.39,1433;Network Library=DBMSSOCN;Initial Catalog=InventorySystem;User ID=sa;Password=Jac0bI2aac1!";
 
         DataSet1 InventorySystem = new DataSet1();
         public void ReadDataBase()
         {
             SqlConnection cnn;
-            cnn = new SqlConnection(connetionString);
+            cnn = new SqlConnection(connectionString);
             try
             {
-
                 cnn.Open();
                 SqlDataAdapter TeamAdapter = new SqlDataAdapter("SELECT * FROM Teams", cnn);
                 SqlDataAdapter MachineAdapter = new SqlDataAdapter("SELECT * FROM Machines", cnn);
                 SqlDataAdapter EmployeeAdapter = new SqlDataAdapter("SELECT * FROM Employees", cnn);
                 SqlDataAdapter EquipmentAdapter = new SqlDataAdapter("SELECT * FROM Equipment", cnn);
+                SqlDataAdapter InUseEquipmentAdapter = new SqlDataAdapter("SELECT * FROM InUseEquipment", cnn);
                 TeamAdapter.Fill(InventorySystem, "Teams");
                 MachineAdapter.Fill(InventorySystem, "Machines");
                 EmployeeAdapter.Fill(InventorySystem, "Employees");
                 EquipmentAdapter.Fill(InventorySystem, "Equipment");
+                EquipmentAdapter.Fill(InventorySystem, "InUseEquipment");
 
                 foreach (DataRow R in InventorySystem.Tables["Teams"].Rows)
                 {
@@ -77,7 +78,7 @@ namespace Inventory_Panel
 
         public void updateEquipmentStatus(string updateState)
         {
-            SqlConnection cnn = new SqlConnection(connetionString);
+            SqlConnection cnn = new SqlConnection(connectionString);
             try
             {
                 cnn.Open();
@@ -93,20 +94,32 @@ namespace Inventory_Panel
 
                 if (updateState == "In Use")
                 {
-                    updateInUse.CommandText = $"INSERT INTO InUseEquipment(Employee,EmployeeName,Equipment,[Date Out],[Status Out]) Values("+ Details.Employee.ID +","+ Details.Employee.Name + "," + Details.Equipment.Type + "," + DateTime.Now + "," + Details.Equipment.Status + ")";
+                    updateInUse.CommandText = $"INSERT INTO InUseEquipment (Employee,[Employee Name],Equipment,[Equipment Type],[Date Out],[Status Out]) Values("+Details.Employee.ID+",@name,@Equipment,@type,@date,@status)";
+                    updateInUse.Parameters.AddWithValue("@name", Details.Employee.Name);
+                    updateInUse.Parameters.AddWithValue("@type", Details.Equipment.Type);
+                    updateInUse.Parameters.AddWithValue("@date", DateTime.Now);
+                    updateInUse.Parameters.AddWithValue("@status", Details.Equipment.Status);
+                    updateInUse.Parameters.AddWithValue("@Equipment", Details.Equipment.ID);
                     updateInUse.ExecuteNonQuery();
                     MessageBox.Show($"Equipment: {Details.Equipment.Type}\n" +
                                     $"Barcode: {Details.Equipment.Barcode}\n" +
                                     $"Has been asigned to: {Details.Employee.Name}");
                 }
-                if (updateState == "Available ")
+                if (updateState == "Available")
                 {
-                    updateInUse.CommandText = "Update InUseEquipment Set [Date In] = " + DateTime.Now + ",[Status Out] = " + Details.Equipment.Status + "Where Equipment = " + Details.Equipment.ID;
+                    updateInUse.CommandText = "Update InUseEquipment Set [Date In] = @date,[Status In] = @status Where Equipment = @ID AND [Date In] IS NULL ";
+                    updateInUse.Parameters.AddWithValue("@date", DateTime.Now);
+                    updateInUse.Parameters.AddWithValue("@status", Details.Equipment.Status);
+                    updateInUse.Parameters.AddWithValue("@ID", Details.Equipment.ID);
                     updateInUse.ExecuteNonQuery();
                     MessageBox.Show($"Equipment: {Details.Equipment.Type}\n" +
                                     $"Barcode: {Details.Equipment.Barcode}\n" +
                                     $"Has been returned by: {Details.Employee.Name}");
                 }
+
+
+                SqlDataAdapter InUseEquipmentAdapter = new SqlDataAdapter("SELECT * FROM InUseEquipment", cnn);
+                InUseEquipmentAdapter.Fill(InventorySystem, "InUseEquipment");
 
                 Details.EquipmentList.Clear();
                 SqlDataAdapter EquipmentAdapter = new SqlDataAdapter("SELECT * FROM Equipment", cnn);
@@ -131,29 +144,13 @@ namespace Inventory_Panel
                 Console.WriteLine(e.ToString());
             }
         }
-        //public void CreateDataset(SqlConnection cnn)
-        //{
-
-        //    //}
-        //    //public void AddMachine()
-        //    //{
-        //    //    SqlConnection cnn = new SqlConnection(connetionString);
-        //    //    try
-        //    //    {
-        //    //        cnn.Open();
-        //    //        MessageBox.Show("Connection Open!");
-        //    //        SqlCommand myCommand = new SqlCommand();
-        //    //        myCommand.Connection = cnn;
-        //    //        myCommand.CommandText = "INSERT INTO Machines (Type,Status,Team)" + "Values ('EGM','Working','Four Kings')";
-        //    //        myCommand.ExecuteNonQuery();
-        //    //        MessageBox.Show("Machine Added");
-        //    //        cnn.Close();
-        //    //    }
-        //    //    catch (Exception e)
-        //    //    {
-        //    //        Console.WriteLine(e.ToString());
-        //    //    }
-        //    //}
-        //}
+        public void CheckInUSe(int ID)
+        {
+            foreach (DataRow r in InventorySystem.Tables["InUseEquipment"].Rows)
+            {
+                if(int.Parse(r["Equipment"].ToString()) == ID)
+                { }
+            }
+    }
     }
 }

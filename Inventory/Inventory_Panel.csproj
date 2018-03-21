@@ -97,6 +97,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>DataSet1.xsd</DependentUpon>
     </Compile>
+    <Compile Include="InUseEquipment.cs" />
     <Compile Include="Loading.cs">
       <SubType>Component</SubType>
     </Compile>

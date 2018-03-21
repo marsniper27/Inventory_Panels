@@ -140,29 +140,6 @@ SELECT ID, Name, [BMM Manager], [IGT Manager] FROM Teams WHERE (ID = @ID)</Comma
             </Mappings>
             <Sources />
           </TableAdapter>
-          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="InUseEquipmentTableAdapter" GeneratorDataComponentClassName="InUseEquipmentTableAdapter" Name="InUseEquipment" UserDataComponentName="InUseEquipmentTableAdapter">
-            <MainSource>
-              <DbSource ConnectionRef="InventorySystemConnectionString (Settings)" DbObjectName="InventorySystem.dbo.InUseEquipment" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
-                <SelectCommand>
-                  <DbCommand CommandType="Text" ModifiedByUser="true">
-                    <CommandText>SELECT ID, Employee, [Employee Name],Equipment, [Date Out], [Date In], [Status Out],[Status In] FROM dbo.InUseEquipment</CommandText>
-                    <Parameters />
-                  </DbCommand>
-                </SelectCommand>
-              </DbSource>
-            </MainSource>
-            <Mappings>
-              <Mapping SourceColumn="ID" DataSetColumn="ID" />
-              <Mapping SourceColumn="Employee" DataSetColumn="Employee" />
-              <Mapping SourceColumn="Equipment" DataSetColumn="Equipment" />
-              <Mapping SourceColumn="Date Out" DataSetColumn="Date Out" />
-              <Mapping SourceColumn="Date In" DataSetColumn="Date In" />
-              <Mapping SourceColumn="Employee Name" DataSetColumn="Employee Name" />
-              <Mapping SourceColumn="Status Out" DataSetColumn="Status Out" />
-              <Mapping SourceColumn="Status In" DataSetColumn="Status In" />
-            </Mappings>
-            <Sources />
-          </TableAdapter>
           <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="MachinesTableAdapter" GeneratorDataComponentClassName="MachinesTableAdapter" Name="Machines" UserDataComponentName="MachinesTableAdapter">
             <MainSource>
               <DbSource ConnectionRef="InventorySystemConnectionString (Settings)" DbObjectName="InventorySystem.dbo.Machines" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
@@ -322,6 +299,107 @@ SELECT ID, Type, [Serial Number], [ITS Number], Barcode, Status, Availability FR
             </Mappings>
             <Sources />
           </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="InUseEquipmentTableAdapter" GeneratorDataComponentClassName="InUseEquipmentTableAdapter" Name="InUseEquipment" UserDataComponentName="InUseEquipmentTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="InventorySystemConnectionString1 (Settings)" DbObjectName="InventorySystem.dbo.InUseEquipment" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+                <DeleteCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>DELETE FROM [dbo].[InUseEquipment] WHERE (([ID] = @Original_ID) AND ((@IsNull_Employee = 1 AND [Employee] IS NULL) OR ([Employee] = @Original_Employee)) AND ((@IsNull_Employee_Name = 1 AND [Employee Name] IS NULL) OR ([Employee Name] = @Original_Employee_Name)) AND ((@IsNull_Equipment = 1 AND [Equipment] IS NULL) OR ([Equipment] = @Original_Equipment)) AND ((@IsNull_Equipment_Type = 1 AND [Equipment Type] IS NULL) OR ([Equipment Type] = @Original_Equipment_Type)) AND ((@IsNull_Date_Out = 1 AND [Date Out] IS NULL) OR ([Date Out] = @Original_Date_Out)) AND ((@IsNull_Date_In = 1 AND [Date In] IS NULL) OR ([Date In] = @Original_Date_In)) AND ((@IsNull_Status_Out = 1 AND [Status Out] IS NULL) OR ([Status Out] = @Original_Status_Out)) AND ((@IsNull_Status_IN = 1 AND [Status IN] IS NULL) OR ([Status IN] = @Original_Status_IN)))</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@Original_ID" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="ID" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_Employee" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="Employee" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@Original_Employee" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="Employee" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_Employee_Name" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="Employee Name" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@Original_Employee_Name" Precision="0" ProviderType="NVarChar" Scale="0" Size="0" SourceColumn="Employee Name" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_Equipment" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="Equipment" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@Original_Equipment" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="Equipment" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_Equipment_Type" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="Equipment Type" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@Original_Equipment_Type" Precision="0" ProviderType="NVarChar" Scale="0" Size="0" SourceColumn="Equipment Type" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_Date_Out" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="Date Out" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="DateTime" Direction="Input" ParameterName="@Original_Date_Out" Precision="0" ProviderType="DateTime" Scale="0" Size="0" SourceColumn="Date Out" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_Date_In" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="Date In" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="DateTime" Direction="Input" ParameterName="@Original_Date_In" Precision="0" ProviderType="DateTime" Scale="0" Size="0" SourceColumn="Date In" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_Status_Out" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="Status Out" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="StringFixedLength" Direction="Input" ParameterName="@Original_Status_Out" Precision="0" ProviderType="NChar" Scale="0" Size="0" SourceColumn="Status Out" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_Status_IN" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="Status IN" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="StringFixedLength" Direction="Input" ParameterName="@Original_Status_IN" Precision="0" ProviderType="NChar" Scale="0" Size="0" SourceColumn="Status IN" SourceColumnNullMapping="false" SourceVersion="Original" />
+                    </Parameters>
+                  </DbCommand>
+                </DeleteCommand>
+                <InsertCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>INSERT INTO [dbo].[InUseEquipment] ([Employee], [Employee Name], [Equipment], [Equipment Type], [Date Out], [Date In], [Status Out], [Status IN], [Note]) VALUES (@Employee, @Employee_Name, @Equipment, @Equipment_Type, @Date_Out, @Date_In, @Status_Out, @Status_IN, @Note);
+SELECT ID, Employee, [Employee Name], Equipment, [Equipment Type], [Date Out], [Date In], [Status Out], [Status IN], Note FROM InUseEquipment WHERE (ID = SCOPE_IDENTITY())</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@Employee" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="Employee" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@Employee_Name" Precision="0" ProviderType="NVarChar" Scale="0" Size="0" SourceColumn="Employee Name" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@Equipment" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="Equipment" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@Equipment_Type" Precision="0" ProviderType="NVarChar" Scale="0" Size="0" SourceColumn="Equipment Type" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="DateTime" Direction="Input" ParameterName="@Date_Out" Precision="0" ProviderType="DateTime" Scale="0" Size="0" SourceColumn="Date Out" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="DateTime" Direction="Input" ParameterName="@Date_In" Precision="0" ProviderType="DateTime" Scale="0" Size="0" SourceColumn="Date In" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="StringFixedLength" Direction="Input" ParameterName="@Status_Out" Precision="0" ProviderType="NChar" Scale="0" Size="0" SourceColumn="Status Out" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="StringFixedLength" Direction="Input" ParameterName="@Status_IN" Precision="0" ProviderType="NChar" Scale="0" Size="0" SourceColumn="Status IN" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@Note" Precision="0" ProviderType="NVarChar" Scale="0" Size="0" SourceColumn="Note" SourceColumnNullMapping="false" SourceVersion="Current" />
+                    </Parameters>
+                  </DbCommand>
+                </InsertCommand>
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>SELECT ID, Employee, [Employee Name], Equipment, [Equipment Type], [Date Out], [Date In], [Status Out], [Status IN], Note FROM dbo.InUseEquipment</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+                <UpdateCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>UPDATE [dbo].[InUseEquipment] SET [Employee] = @Employee, [Employee Name] = @Employee_Name, [Equipment] = @Equipment, [Equipment Type] = @Equipment_Type, [Date Out] = @Date_Out, [Date In] = @Date_In, [Status Out] = @Status_Out, [Status IN] = @Status_IN, [Note] = @Note WHERE (([ID] = @Original_ID) AND ((@IsNull_Employee = 1 AND [Employee] IS NULL) OR ([Employee] = @Original_Employee)) AND ((@IsNull_Employee_Name = 1 AND [Employee Name] IS NULL) OR ([Employee Name] = @Original_Employee_Name)) AND ((@IsNull_Equipment = 1 AND [Equipment] IS NULL) OR ([Equipment] = @Original_Equipment)) AND ((@IsNull_Equipment_Type = 1 AND [Equipment Type] IS NULL) OR ([Equipment Type] = @Original_Equipment_Type)) AND ((@IsNull_Date_Out = 1 AND [Date Out] IS NULL) OR ([Date Out] = @Original_Date_Out)) AND ((@IsNull_Date_In = 1 AND [Date In] IS NULL) OR ([Date In] = @Original_Date_In)) AND ((@IsNull_Status_Out = 1 AND [Status Out] IS NULL) OR ([Status Out] = @Original_Status_Out)) AND ((@IsNull_Status_IN = 1 AND [Status IN] IS NULL) OR ([Status IN] = @Original_Status_IN)));
+SELECT ID, Employee, [Employee Name], Equipment, [Equipment Type], [Date Out], [Date In], [Status Out], [Status IN], Note FROM InUseEquipment WHERE (ID = @ID)</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@Employee" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="Employee" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@Employee_Name" Precision="0" ProviderType="NVarChar" Scale="0" Size="0" SourceColumn="Employee Name" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@Equipment" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="Equipment" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@Equipment_Type" Precision="0" ProviderType="NVarChar" Scale="0" Size="0" SourceColumn="Equipment Type" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="DateTime" Direction="Input" ParameterName="@Date_Out" Precision="0" ProviderType="DateTime" Scale="0" Size="0" SourceColumn="Date Out" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="DateTime" Direction="Input" ParameterName="@Date_In" Precision="0" ProviderType="DateTime" Scale="0" Size="0" SourceColumn="Date In" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="StringFixedLength" Direction="Input" ParameterName="@Status_Out" Precision="0" ProviderType="NChar" Scale="0" Size="0" SourceColumn="Status Out" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="StringFixedLength" Direction="Input" ParameterName="@Status_IN" Precision="0" ProviderType="NChar" Scale="0" Size="0" SourceColumn="Status IN" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@Note" Precision="0" ProviderType="NVarChar" Scale="0" Size="0" SourceColumn="Note" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@Original_ID" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="ID" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_Employee" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="Employee" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@Original_Employee" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="Employee" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_Employee_Name" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="Employee Name" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@Original_Employee_Name" Precision="0" ProviderType="NVarChar" Scale="0" Size="0" SourceColumn="Employee Name" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_Equipment" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="Equipment" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@Original_Equipment" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="Equipment" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_Equipment_Type" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="Equipment Type" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@Original_Equipment_Type" Precision="0" ProviderType="NVarChar" Scale="0" Size="0" SourceColumn="Equipment Type" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_Date_Out" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="Date Out" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="DateTime" Direction="Input" ParameterName="@Original_Date_Out" Precision="0" ProviderType="DateTime" Scale="0" Size="0" SourceColumn="Date Out" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_Date_In" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="Date In" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="DateTime" Direction="Input" ParameterName="@Original_Date_In" Precision="0" ProviderType="DateTime" Scale="0" Size="0" SourceColumn="Date In" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_Status_Out" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="Status Out" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="StringFixedLength" Direction="Input" ParameterName="@Original_Status_Out" Precision="0" ProviderType="NChar" Scale="0" Size="0" SourceColumn="Status Out" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_Status_IN" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="Status IN" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="StringFixedLength" Direction="Input" ParameterName="@Original_Status_IN" Precision="0" ProviderType="NChar" Scale="0" Size="0" SourceColumn="Status IN" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="ID" ColumnName="ID" DataSourceName="" DataTypeServer="int" DbType="Int32" Direction="Input" ParameterName="@ID" Precision="0" ProviderType="Int" Scale="0" Size="4" SourceColumn="ID" SourceColumnNullMapping="false" SourceVersion="Current" />
+                    </Parameters>
+                  </DbCommand>
+                </UpdateCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="ID" DataSetColumn="ID" />
+              <Mapping SourceColumn="Employee" DataSetColumn="Employee" />
+              <Mapping SourceColumn="Employee Name" DataSetColumn="Employee Name" />
+              <Mapping SourceColumn="Equipment" DataSetColumn="Equipment" />
+              <Mapping SourceColumn="Equipment Type" DataSetColumn="Equipment Type" />
+              <Mapping SourceColumn="Date Out" DataSetColumn="Date Out" />
+              <Mapping SourceColumn="Date In" DataSetColumn="Date In" />
+              <Mapping SourceColumn="Status Out" DataSetColumn="Status Out" />
+              <Mapping SourceColumn="Status IN" DataSetColumn="Status IN" />
+              <Mapping SourceColumn="Note" DataSetColumn="Note" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
         </Tables>
         <Sources />
       </DataSource>
@@ -394,38 +472,6 @@ SELECT ID, Type, [Serial Number], [ITS Number], Barcode, Status, Availability FR
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="InUseEquipment" msprop:Generator_TableClassName="InUseEquipmentDataTable" msprop:Generator_TableVarName="tableInUseEquipment" msprop:Generator_RowChangedName="InUseEquipmentRowChanged" msprop:Generator_TablePropName="InUseEquipment" msprop:Generator_RowDeletingName="InUseEquipmentRowDeleting" msprop:Generator_RowChangingName="InUseEquipmentRowChanging" msprop:Generator_RowEvHandlerName="InUseEquipmentRowChangeEventHandler" msprop:Generator_RowDeletedName="InUseEquipmentRowDeleted" msprop:Generator_RowClassName="InUseEquipmentRow" msprop:Generator_UserTableName="InUseEquipment" msprop:Generator_RowEvArgName="InUseEquipmentRowChangeEvent">
-          <xs:complexType>
-            <xs:sequence>
-              <xs:element name="ID" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnID" msprop:Generator_ColumnPropNameInRow="ID" msprop:Generator_ColumnPropNameInTable="IDColumn" msprop:Generator_UserColumnName="ID" type="xs:int" />
-              <xs:element name="Employee" msprop:Generator_ColumnVarNameInTable="columnEmployee" msprop:Generator_ColumnPropNameInRow="Employee" msprop:Generator_ColumnPropNameInTable="EmployeeColumn" msprop:Generator_UserColumnName="Employee" type="xs:int" minOccurs="0" />
-              <xs:element name="Equipment" msprop:Generator_ColumnVarNameInTable="columnEquipment" msprop:Generator_ColumnPropNameInRow="Equipment" msprop:Generator_ColumnPropNameInTable="EquipmentColumn" msprop:Generator_UserColumnName="Equipment" type="xs:int" minOccurs="0" />
-              <xs:element name="Date_x0020_Out" msprop:Generator_ColumnVarNameInTable="columnDate_Out" msprop:Generator_ColumnPropNameInRow="Date_Out" msprop:Generator_ColumnPropNameInTable="Date_OutColumn" msprop:Generator_UserColumnName="Date Out" type="xs:dateTime" minOccurs="0" />
-              <xs:element name="Date_x0020_In" msprop:Generator_ColumnVarNameInTable="columnDate_In" msprop:Generator_ColumnPropNameInRow="Date_In" msprop:Generator_ColumnPropNameInTable="Date_InColumn" msprop:Generator_UserColumnName="Date In" type="xs:dateTime" minOccurs="0" />
-              <xs:element name="Employee_x0020_Name" msprop:Generator_ColumnVarNameInTable="columnEmployee_Name" msprop:Generator_ColumnPropNameInRow="Employee_Name" msprop:Generator_ColumnPropNameInTable="Employee_NameColumn" msprop:Generator_UserColumnName="Employee Name" minOccurs="0">
-                <xs:simpleType>
-                  <xs:restriction base="xs:string">
-                    <xs:maxLength value="50" />
-                  </xs:restriction>
-                </xs:simpleType>
-              </xs:element>
-              <xs:element name="Status_x0020_Out" msprop:Generator_ColumnVarNameInTable="columnStatus_Out" msprop:Generator_ColumnPropNameInRow="Status_Out" msprop:Generator_ColumnPropNameInTable="Status_OutColumn" msprop:Generator_UserColumnName="Status Out" minOccurs="0">
-                <xs:simpleType>
-                  <xs:restriction base="xs:string">
-                    <xs:maxLength value="10" />
-                  </xs:restriction>
-                </xs:simpleType>
-              </xs:element>
-              <xs:element name="Status_x0020_In" msprop:Generator_ColumnVarNameInTable="columnStatus_In" msprop:Generator_ColumnPropNameInRow="Status_In" msprop:Generator_ColumnPropNameInTable="Status_InColumn" msprop:Generator_UserColumnName="Status In" minOccurs="0">
-                <xs:simpleType>
-                  <xs:restriction base="xs:string">
-                    <xs:maxLength value="10" />
-                  </xs:restriction>
-                </xs:simpleType>
-              </xs:element>
-            </xs:sequence>
-          </xs:complexType>
-        </xs:element>
         <xs:element name="Machines" msprop:Generator_TableClassName="MachinesDataTable" msprop:Generator_TableVarName="tableMachines" msprop:Generator_RowChangedName="MachinesRowChanged" msprop:Generator_TablePropName="Machines" msprop:Generator_RowDeletingName="MachinesRowDeleting" msprop:Generator_RowChangingName="MachinesRowChanging" msprop:Generator_RowEvHandlerName="MachinesRowChangeEventHandler" msprop:Generator_RowDeletedName="MachinesRowDeleted" msprop:Generator_RowClassName="MachinesRow" msprop:Generator_UserTableName="Machines" msprop:Generator_RowEvArgName="MachinesRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
@@ -487,6 +533,52 @@ SELECT ID, Type, [Serial Number], [ITS Number], Barcode, Status, Availability FR
             </xs:sequence>
           </xs:complexType>
         </xs:element>
+        <xs:element name="InUseEquipment" msprop:Generator_TableClassName="InUseEquipmentDataTable" msprop:Generator_TableVarName="tableInUseEquipment" msprop:Generator_TablePropName="InUseEquipment" msprop:Generator_RowDeletingName="InUseEquipmentRowDeleting" msprop:Generator_RowChangingName="InUseEquipmentRowChanging" msprop:Generator_RowEvHandlerName="InUseEquipmentRowChangeEventHandler" msprop:Generator_RowDeletedName="InUseEquipmentRowDeleted" msprop:Generator_UserTableName="InUseEquipment" msprop:Generator_RowChangedName="InUseEquipmentRowChanged" msprop:Generator_RowEvArgName="InUseEquipmentRowChangeEvent" msprop:Generator_RowClassName="InUseEquipmentRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="ID" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnID" msprop:Generator_ColumnPropNameInRow="ID" msprop:Generator_ColumnPropNameInTable="IDColumn" msprop:Generator_UserColumnName="ID" type="xs:int" />
+              <xs:element name="Employee" msprop:Generator_ColumnVarNameInTable="columnEmployee" msprop:Generator_ColumnPropNameInRow="Employee" msprop:Generator_ColumnPropNameInTable="EmployeeColumn" msprop:Generator_UserColumnName="Employee" type="xs:int" minOccurs="0" />
+              <xs:element name="Employee_x0020_Name" msprop:Generator_ColumnVarNameInTable="columnEmployee_Name" msprop:Generator_ColumnPropNameInRow="Employee_Name" msprop:Generator_ColumnPropNameInTable="Employee_NameColumn" msprop:Generator_UserColumnName="Employee Name" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Equipment" msprop:Generator_ColumnVarNameInTable="columnEquipment" msprop:Generator_ColumnPropNameInRow="Equipment" msprop:Generator_ColumnPropNameInTable="EquipmentColumn" msprop:Generator_UserColumnName="Equipment" type="xs:int" minOccurs="0" />
+              <xs:element name="Equipment_x0020_Type" msprop:Generator_ColumnVarNameInTable="columnEquipment_Type" msprop:Generator_ColumnPropNameInRow="Equipment_Type" msprop:Generator_ColumnPropNameInTable="Equipment_TypeColumn" msprop:Generator_UserColumnName="Equipment Type" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Date_x0020_Out" msprop:Generator_ColumnVarNameInTable="columnDate_Out" msprop:Generator_ColumnPropNameInRow="Date_Out" msprop:Generator_ColumnPropNameInTable="Date_OutColumn" msprop:Generator_UserColumnName="Date Out" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="Date_x0020_In" msprop:Generator_ColumnVarNameInTable="columnDate_In" msprop:Generator_ColumnPropNameInRow="Date_In" msprop:Generator_ColumnPropNameInTable="Date_InColumn" msprop:Generator_UserColumnName="Date In" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="Status_x0020_Out" msprop:Generator_ColumnVarNameInTable="columnStatus_Out" msprop:Generator_ColumnPropNameInRow="Status_Out" msprop:Generator_ColumnPropNameInTable="Status_OutColumn" msprop:Generator_UserColumnName="Status Out" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="10" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Status_x0020_IN" msprop:Generator_ColumnVarNameInTable="columnStatus_IN" msprop:Generator_ColumnPropNameInRow="Status_IN" msprop:Generator_ColumnPropNameInTable="Status_INColumn" msprop:Generator_UserColumnName="Status IN" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="10" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Note" msprop:Generator_ColumnVarNameInTable="columnNote" msprop:Generator_ColumnPropNameInRow="Note" msprop:Generator_ColumnPropNameInTable="NoteColumn" msprop:Generator_UserColumnName="Note" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2147483647" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
       </xs:choice>
     </xs:complexType>
     <xs:unique name="Constraint1" msdata:PrimaryKey="true">
@@ -497,10 +589,6 @@ SELECT ID, Type, [Serial Number], [ITS Number], Barcode, Status, Availability FR
       <xs:selector xpath=".//mstns:Teams" />
       <xs:field xpath="mstns:ID" />
     </xs:unique>
-    <xs:unique name="InUseEquipment_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
-      <xs:selector xpath=".//mstns:InUseEquipment" />
-      <xs:field xpath="mstns:ID" />
-    </xs:unique>
     <xs:unique name="Machines_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
       <xs:selector xpath=".//mstns:Machines" />
       <xs:field xpath="mstns:ID" />
@@ -509,13 +597,17 @@ SELECT ID, Type, [Serial Number], [ITS Number], Barcode, Status, Availability FR
       <xs:selector xpath=".//mstns:Equipment" />
       <xs:field xpath="mstns:ID" />
     </xs:unique>
+    <xs:unique name="InUseEquipment_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:InUseEquipment" />
+      <xs:field xpath="mstns:ID" />
+    </xs:unique>
   </xs:element>
   <xs:annotation>
     <xs:appinfo>
       <msdata:Relationship name="FK_Employees_Teams" msdata:parent="Teams" msdata:child="Employees" msdata:parentkey="Name" msdata:childkey="Team" msprop:Generator_UserChildTable="Employees" msprop:Generator_ChildPropName="GetEmployeesRows" msprop:Generator_UserRelationName="FK_Employees_Teams" msprop:Generator_ParentPropName="TeamsRow" msprop:Generator_RelationVarName="relationFK_Employees_Teams" msprop:Generator_UserParentTable="Teams" />
-      <msdata:Relationship name="FK_InUseEquipment_Employees" msdata:parent="Employees" msdata:child="InUseEquipment" msdata:parentkey="ID" msdata:childkey="Employee" msprop:Generator_UserChildTable="InUseEquipment" msprop:Generator_ChildPropName="GetInUseEquipmentRows" msprop:Generator_UserRelationName="FK_InUseEquipment_Employees" msprop:Generator_RelationVarName="relationFK_InUseEquipment_Employees" msprop:Generator_UserParentTable="Employees" msprop:Generator_ParentPropName="EmployeesRow" />
       <msdata:Relationship name="FK_Machines_Teams" msdata:parent="Teams" msdata:child="Machines" msdata:parentkey="Name" msdata:childkey="Team" msprop:Generator_UserChildTable="Machines" msprop:Generator_ChildPropName="GetMachinesRows" msprop:Generator_UserRelationName="FK_Machines_Teams" msprop:Generator_RelationVarName="relationFK_Machines_Teams" msprop:Generator_UserParentTable="Teams" msprop:Generator_ParentPropName="TeamsRow" />
-      <msdata:Relationship name="Equipment_InUseEquipment" msdata:parent="Equipment" msdata:child="InUseEquipment" msdata:parentkey="ID" msdata:childkey="Equipment" msprop:Generator_UserChildTable="InUseEquipment" msprop:Generator_ChildPropName="GetInUseEquipmentRows" msprop:Generator_UserRelationName="Equipment_InUseEquipment" msprop:Generator_ParentPropName="EquipmentRow" msprop:Generator_RelationVarName="relationEquipment_InUseEquipment" msprop:Generator_UserParentTable="Equipment" />
+      <msdata:Relationship name="FK_InUseEquipment_Equipment" msdata:parent="Equipment" msdata:child="InUseEquipment" msdata:parentkey="ID" msdata:childkey="Equipment" msprop:Generator_UserChildTable="InUseEquipment" msprop:Generator_ChildPropName="GetInUseEquipmentRows" msprop:Generator_UserRelationName="FK_InUseEquipment_Equipment" msprop:Generator_ParentPropName="EquipmentRow" msprop:Generator_RelationVarName="relationFK_InUseEquipment_Equipment" msprop:Generator_UserParentTable="Equipment" />
+      <msdata:Relationship name="InUseEquipment_Employees" msdata:parent="InUseEquipment" msdata:child="Employees" msdata:parentkey="Employee" msdata:childkey="ID" msprop:Generator_UserChildTable="Employees" msprop:Generator_ChildPropName="GetEmployeesRows" msprop:Generator_UserRelationName="InUseEquipment_Employees" msprop:Generator_RelationVarName="relationInUseEquipment_Employees" msprop:Generator_UserParentTable="InUseEquipment" msprop:Generator_ParentPropName="InUseEquipmentRow" />
     </xs:appinfo>
   </xs:annotation>
 </xs:schema>

@@ -34,6 +34,7 @@
             this.Return = new System.Windows.Forms.Button();
             this.equipmentType = new System.Windows.Forms.Label();
             this.equipmentSerial = new System.Windows.Forms.Label();
+            this.Status = new System.Windows.Forms.ListBox();
             this.SuspendLayout();
             // 
             // label1
@@ -81,7 +82,7 @@
             this.equipmentType.AutoSize = true;
             this.equipmentType.Location = new System.Drawing.Point(12, 155);
             this.equipmentType.Name = "equipmentType";
-            this.equipmentType.Size = new System.Drawing.Size(83, 13);
+            this.equipmentType.Size = new System.Drawing.Size(80, 13);
             this.equipmentType.TabIndex = 6;
             this.equipmentType.Text = "equipmentType";
             // 
@@ -90,13 +91,24 @@
             this.equipmentSerial.AutoSize = true;
             this.equipmentSerial.Location = new System.Drawing.Point(12, 180);
             this.equipmentSerial.Name = "equipmentSerial";
-            this.equipmentSerial.Size = new System.Drawing.Size(83, 13);
+            this.equipmentSerial.Size = new System.Drawing.Size(126, 13);
             this.equipmentSerial.TabIndex = 6;
             this.equipmentSerial.Text = "Equipment Serial Number";
             // 
+            // Status
+            // 
+            this.Status.FormattingEnabled = true;
+            this.Status.Items.AddRange(new object[] {
+            "Working",
+            "Broken"});
+            this.Status.Location = new System.Drawing.Point(0, 0);
+            this.Status.Name = "Status";
+            this.Status.Size = new System.Drawing.Size(120, 96);
+            this.Status.TabIndex = 0;
+            // 
             // CheckIn
             // 
-            AutoSize = true;
+            this.AutoSize = true;
             this.Controls.Add(this.Submit);
             this.Controls.Add(this.Return);
             this.Controls.Add(this.barcodeBox);
@@ -118,5 +130,6 @@
         private System.Windows.Forms.Button Return;
         private System.Windows.Forms.Label equipmentType;
         private System.Windows.Forms.Label equipmentSerial;
+        private System.Windows.Forms.ListBox Status;
     }
 }
