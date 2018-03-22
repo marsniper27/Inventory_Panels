@@ -12,7 +12,6 @@ namespace Inventory_Panel
 {
     public partial class CheckIn : Panel
     {
-
         public int Barcode = 0;
         public CheckIn()
         {
@@ -35,7 +34,10 @@ namespace Inventory_Panel
                     {
                         if (eq.Availability == "In Use    ")
                         {
+                            Database DB = new Database();
                             Details.Equipment = eq;
+                            Name = DB.CheckInUSe(eq.ID);
+                            EmployeeName.Text = "Employee: " + Name;
                             equipmentType.Text = "Equipment Type: " + eq.Type;
                             equipmentSerial.Text = "Serial Number: " + eq.SerialNumber.ToString();
                         }
@@ -96,11 +98,15 @@ namespace Inventory_Panel
                     {
                         if (eq.Barcode == Barcode)
                         {
+                            Database DB = new Database();
 
+                            EmployeeName.Text = "Employee: ";
                             equipmentType.Text = "Equipment Type: " + eq.Type;
                             equipmentSerial.Text = "Serial Number: " + eq.SerialNumber.ToString();
                             if (eq.Availability == "In Use    ")
                             {
+                                Name = DB.CheckInUSe(eq.ID);
+                                EmployeeName.Text = "Employee: " + Name;
                                 Details.Equipment = eq;
                             }
                             else if (eq.Availability == "Available ")

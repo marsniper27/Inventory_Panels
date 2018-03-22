@@ -31,9 +31,7 @@ namespace Inventory_Panel
         private void Main_Load(object sender, EventArgs e)
         {
             var DB = new Database();
-            DataSet1 ds = new DataSet1();
             DB.ReadDataBase();
-            Details.data = ds;
 
             var load = new Loading();
             Details.Load = load;

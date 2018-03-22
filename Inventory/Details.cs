@@ -17,7 +17,7 @@ namespace Inventory_Panel
         public static string File;
         public static List<Team> Teams = new List<Team>();
         public static List<Equipment> EquipmentList = new List<Equipment>();
-        public static  DataSet data = new DataSet();
         public static Equipment Equipment = new Equipment();
+        public static InUseEquipment inUse = new InUseEquipment();
     }
 }

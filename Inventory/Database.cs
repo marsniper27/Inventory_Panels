@@ -30,7 +30,7 @@ namespace Inventory_Panel
                 MachineAdapter.Fill(InventorySystem, "Machines");
                 EmployeeAdapter.Fill(InventorySystem, "Employees");
                 EquipmentAdapter.Fill(InventorySystem, "Equipment");
-                EquipmentAdapter.Fill(InventorySystem, "InUseEquipment");
+                InUseEquipmentAdapter.Fill(InventorySystem, "InUseEquipment");
 
                 foreach (DataRow R in InventorySystem.Tables["Teams"].Rows)
                 {
@@ -84,7 +84,7 @@ namespace Inventory_Panel
                 cnn.Open();
                 SqlCommand equipmentStatus = new SqlCommand();
                 equipmentStatus.Connection = cnn;
-                equipmentStatus.CommandText = "Update Equipment Set Availability = @availability Where Barcode = "+Details.Equipment.Barcode;
+                equipmentStatus.CommandText = "Update Equipment Set Availability = @availability Where Barcode = "+ Details.Equipment.Barcode;
                 equipmentStatus.Parameters.AddWithValue("@availability", updateState);
                 equipmentStatus.ExecuteNonQuery();
 
@@ -144,13 +144,30 @@ namespace Inventory_Panel
                 Console.WriteLine(e.ToString());
             }
         }
-        public void CheckInUSe(int ID)
+        public string CheckInUSe(int ID)
         {
+
+            string name = "";
+
+            InUseEquipment IUE = new InUseEquipment();
+            SqlConnection cnn;
+            cnn = new SqlConnection(connectionString);
+
+            SqlDataAdapter InUseEquipmentAdapter = new SqlDataAdapter("SELECT * FROM InUseEquipment Where Equipment = @ID AND [Date In] IS NULL ", cnn);
+            InUseEquipmentAdapter.SelectCommand.Parameters.AddWithValue("@ID", ID);
+            InUseEquipmentAdapter.Fill(InventorySystem, "InUseEquipment");
+
+
             foreach (DataRow r in InventorySystem.Tables["InUseEquipment"].Rows)
             {
                 if(int.Parse(r["Equipment"].ToString()) == ID)
-                { }
+                {
+                    name = r["Employee Name"].ToString();
+
+                    return name;
+                }
             }
-    }
+            return name;
+        }
     }
 }

@@ -35,6 +35,7 @@
             this.equipmentType = new System.Windows.Forms.Label();
             this.equipmentSerial = new System.Windows.Forms.Label();
             this.Status = new System.Windows.Forms.ListBox();
+            this.EmployeeName = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // label1
@@ -50,7 +51,7 @@
             // barcodeBox
             // 
             this.barcodeBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.barcodeBox.Location = new System.Drawing.Point(13, 33);
+            this.barcodeBox.Location = new System.Drawing.Point(12, 33);
             this.barcodeBox.Name = "barcodeBox";
             this.barcodeBox.Size = new System.Drawing.Size(100, 26);
             this.barcodeBox.TabIndex = 1;
@@ -80,7 +81,7 @@
             // equipmentType
             // 
             this.equipmentType.AutoSize = true;
-            this.equipmentType.Location = new System.Drawing.Point(12, 155);
+            this.equipmentType.Location = new System.Drawing.Point(12, 90);
             this.equipmentType.Name = "equipmentType";
             this.equipmentType.Size = new System.Drawing.Size(80, 13);
             this.equipmentType.TabIndex = 6;
@@ -89,7 +90,7 @@
             // equipmentSerial
             // 
             this.equipmentSerial.AutoSize = true;
-            this.equipmentSerial.Location = new System.Drawing.Point(12, 180);
+            this.equipmentSerial.Location = new System.Drawing.Point(12, 120);
             this.equipmentSerial.Name = "equipmentSerial";
             this.equipmentSerial.Size = new System.Drawing.Size(126, 13);
             this.equipmentSerial.TabIndex = 6;
@@ -106,6 +107,15 @@
             this.Status.Size = new System.Drawing.Size(120, 96);
             this.Status.TabIndex = 0;
             // 
+            // EmployeeName
+            // 
+            this.EmployeeName.AutoSize = true;
+            this.EmployeeName.Location = new System.Drawing.Point(12, 60);
+            this.EmployeeName.Name = "EmployeeName";
+            this.EmployeeName.Size = new System.Drawing.Size(100, 23);
+            this.EmployeeName.TabIndex = 0;
+            this.EmployeeName.Text = "Employee: ";
+            // 
             // CheckIn
             // 
             this.AutoSize = true;
@@ -115,6 +125,7 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.equipmentSerial);
             this.Controls.Add(this.equipmentType);
+            this.Controls.Add(this.EmployeeName);
             this.Size = new System.Drawing.Size(284, 300);
             this.Text = "CheckIn";
             this.ResumeLayout(false);
@@ -131,5 +142,6 @@
         private System.Windows.Forms.Label equipmentType;
         private System.Windows.Forms.Label equipmentSerial;
         private System.Windows.Forms.ListBox Status;
+        private System.Windows.Forms.Label EmployeeName;
     }
 }

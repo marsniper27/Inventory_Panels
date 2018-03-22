@@ -85,7 +85,7 @@
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(113, 13);
             this.label3.TabIndex = 3;
-            this.label3.Text = "Please Scan Barcode.";
+            this.label3.Text = "Please Scan Barcode:";
             // 
             // textBox1
             // 
@@ -95,14 +95,14 @@
             this.textBox1.TabIndex = 4;
             this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
-            // label4
+            // nameLabel
             // 
             this.nameLabel.AutoSize = true;
             this.nameLabel.Location = new System.Drawing.Point(12, 57);
-            this.nameLabel.Name = "nameTextBox";
-            this.nameLabel.Size = new System.Drawing.Size(84, 13);
+            this.nameLabel.Name = "nameLabel";
+            this.nameLabel.Size = new System.Drawing.Size(90, 13);
             this.nameLabel.TabIndex = 5;
-            this.nameLabel.Text = "Employee Name";
+            this.nameLabel.Text = "Employee Name: ";
             // 
             // teamLabel
             // 
@@ -118,16 +118,16 @@
             this.equipmentType.AutoSize = true;
             this.equipmentType.Location = new System.Drawing.Point(12, 155);
             this.equipmentType.Name = "equipmentType";
-            this.equipmentType.Size = new System.Drawing.Size(83, 13);
+            this.equipmentType.Size = new System.Drawing.Size(84, 13);
             this.equipmentType.TabIndex = 6;
-            this.equipmentType.Text = "equipmentType";
+            this.equipmentType.Text = "Equipment Type";
             // 
             // equipmentSerial
             // 
             this.equipmentSerial.AutoSize = true;
             this.equipmentSerial.Location = new System.Drawing.Point(12, 180);
             this.equipmentSerial.Name = "equipmentSerial";
-            this.equipmentSerial.Size = new System.Drawing.Size(83, 13);
+            this.equipmentSerial.Size = new System.Drawing.Size(126, 13);
             this.equipmentSerial.TabIndex = 6;
             this.equipmentSerial.Text = "Equipment Serial Number";
             // 

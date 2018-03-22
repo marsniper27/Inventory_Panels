@@ -119,8 +119,8 @@ namespace Inventory_Panel
                         if (em.idCard == card)
                         {
                             Details.Employee = em;
-                            nameLabel.Text = em.Name;
-                            teamLabel.Text = em.Team;
+                            nameLabel.Text = "Employee: " + em.Name;
+                            teamLabel.Text = "Team: " + em.Team;
                         }
                     }
                 }
